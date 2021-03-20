@@ -39,7 +39,7 @@ def create_splits(df: DataFrame,
 
     assert len(splits) == 2, "Train, validation and test splits must be provided, please provide 2 of them as fractions."
     if keep_missing:
-        unlabelled_df = df[df.tagline == '']
+        unlabelled_df = df[df["tagline"] == '']
         unlabelled_df.to_csv(os.path.join(save_path, "tagless.csv"))
         print(f"Tagless set size: {len(unlabelled_df)}")
         print("Tagless dataset created!")
