@@ -4,11 +4,24 @@
 
 This repository is for our DSAI movie tagline prediction project.
 
-## Install
+## Installation
 
-Create a virtual/pipenv/conda environment and run the following command. 
+### Package install:
+Run the following command to install the package from PyPI or conda.
 
 `pip install DSAI_proj`
+`conda install DSAI_proj`
+
+### Editable Install:
+1) Clone the repository locally and cd into it. 
+
+2) Create a virtual/conda/pipenv environment first.
+
+3) Depending on which type of environment you are using, run one of the following commands:
+
+`pip install -e`
+`conda develop .`
+`pipenv install -e`
 
 ## Data Extraction & Cleaning
 

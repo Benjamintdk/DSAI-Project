@@ -2,9 +2,9 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"extract_dataset": "00_extract.ipynb",
-         "extract_dataset_threaded": "00_extract.ipynb",
-         "create_splits": "00_extract.ipynb"}
+index = {"extract_dataset": "01_extract.ipynb",
+         "extract_dataset_threaded": "01_extract.ipynb",
+         "create_splits": "01_extract.ipynb"}
 
 modules = ["extract.py"]
 

@@ -38,20 +38,39 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Install">Install<a class="anchor-link" href="#Install"> </a></h2>
+<h2 id="Installation">Installation<a class="anchor-link" href="#Installation"> </a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Create a virtual/pipenv/conda environment and run the following command.</p>
+<h3 id="Package-install:">Package install:<a class="anchor-link" href="#Package-install:"> </a></h3><p>Run the following command to install the package from PyPI or conda.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>pip install DSAI_proj</code></p>
+<p><code>pip install DSAI_proj</code>
+<code>conda install DSAI_proj</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Editable-Install:">Editable Install:<a class="anchor-link" href="#Editable-Install:"> </a></h3><p>1) Clone the repository locally and cd into it.</p>
+<p>2) Create a virtual/conda/pipenv environment first.</p>
+<p>3) Depending on which type of environment you are using, run one of the following commands:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>pip install -e</code>
+<code>conda develop .</code>
+<code>pipenv install -e</code></p>
 
 </div>
 </div>

@@ -141,7 +141,3 @@ checklink/cookies.txt
 
 # mini sample datasets
 *.csv
-
-# pipenv pipfiles and lockfiles
-Pipfile 
-Pipfile.lock

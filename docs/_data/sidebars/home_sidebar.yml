@@ -10,7 +10,7 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: Data Preprocessing
+      title: 'Chapter 1: Data Preprocessing'
       url: extract.html
     output: web
     title: DSAI_proj
