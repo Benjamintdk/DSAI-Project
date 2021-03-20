@@ -7,6 +7,9 @@ name = "pypi"
 ipykernel = "*"
 jupyter = "*"
 nbdev = "*"
+pandas = "*"
+requests = "*"
+scikit-learn = "*"
 
 [dev-packages]
 
