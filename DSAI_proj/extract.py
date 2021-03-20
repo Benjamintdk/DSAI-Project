@@ -25,7 +25,7 @@ def extract_dataset_threaded(api_key: str,
                              max_ds_size: int,
                              max_threads: int) -> DataFrame:
 
-    max_threads = max_threads if max_threads < max_ds_size else ds_size
+    max_threads = max_threads if max_threads < max_ds_size else max_ds_size
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_threads) as executor:
         movies = [ex for n in range(max_ds_size) if (ex := executor.submit(extract_dataset, api_key, n).result()) is not None]
     return pd.DataFrame.from_records(movies)
@@ -45,7 +45,7 @@ def create_splits(df: DataFrame,
         unlabelled_df.to_csv(os.path.join(save_path, "tagless.csv"))
         print(f"Tagless set size: {len(unlabelled_df)}")
         print("Tagless dataset created!")
-    labelled_df = df[df.tagline != '']
+    labelled_df = df[df[label] != '']
     df_size = len(labelled_df)
     labelled_df = shuffle(labelled_df, random_state=seed)
     labelled_df.reset_index(drop=True, inplace=True)
