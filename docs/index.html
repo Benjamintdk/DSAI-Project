@@ -83,17 +83,15 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-Extraction-&amp;-Cleaning">Data Extraction &amp; Cleaning<a class="anchor-link" href="#Data-Extraction-&amp;-Cleaning"> </a></h2>
+<h2 id="Data-Extraction">Data Extraction<a class="anchor-link" href="#Data-Extraction"> </a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The functions in this package perform the following functions for data extraction via the TMDB API:</p>
+<p>The main function in this package perform the following functions for data extraction via the TMDB API:</p>
 <ul>
 <li>Multi-threaded download of movie information via the extract_dataset_threaded function.</li>
-<li>Dataset splitting and segmenting via the create_splits function.</li>
-<li>Cleaning of the dataset has yet to be performed - TO-DO!!!</li>
 </ul>
 
 </div>
@@ -107,7 +105,35 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>TO-DO!!!</p>
+<p>Now that we have our raw dataset to work with, we begin by looking at:</p>
+<ul>
+<li>The different types of data present.</li>
+<li>How they might be relevant to our task.</li>
+<li>Their respective distributions and whether there might be class imbalances.</li>
+<li>Missing data and other considerations to be had later during cleaning.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data-Cleaning-and-Feature-Engineering">Data Cleaning and Feature Engineering<a class="anchor-link" href="#Data-Cleaning-and-Feature-Engineering"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After the EDA step, we have generated insights from the data in terms of their distribution and relevance our overall task. The functions in this package perform the following functions to clean and feature engineer the raw data:</p>
+<ul>
+<li>Drop columns which are irrelevant </li>
+<li>For columns/features with missing data, how to replace missing data.</li>
+<li>For columns/features with json objects, unpack the json objects into new columns.</li>
+<li>For categorical features, ensure that they are categoized accordingly.</li>
+<li>For continuous features, ensure that they are normalized and standardized.</li>
+<li>Separate out examples with and without taglines.</li>
+<li>Save the dataset into separate train, valid, test and tagless csv files.</li>
+</ul>
 
 </div>
 </div>

@@ -2,11 +2,13 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"extract_dataset": "01_extract.ipynb",
-         "extract_dataset_threaded": "01_extract.ipynb",
-         "create_splits": "01_extract.ipynb"}
+index = {"extract_dataset": "00_extract.ipynb",
+         "save_to_csv": "00_extract.ipynb",
+         "extract_dataset_threaded": "00_extract.ipynb",
+         "create_splits": "02_clean.ipynb"}
 
-modules = ["extract.py"]
+modules = ["extract.py",
+           "clean.py"]
 
 doc_url = "https://Benjamintdk.github.io/DSAI_proj/"
 

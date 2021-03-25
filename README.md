@@ -28,16 +28,29 @@ Run the following command to install the package from PyPI or conda.
 
 `pipenv install -e`
 
-## Data Extraction & Cleaning
+## Data Extraction
 
-The functions in this package perform the following functions for data extraction via the TMDB API:
+The main function in this package perform the following functions for data extraction via the TMDB API:
 - Multi-threaded download of movie information via the extract_dataset_threaded function.
-- Dataset splitting and segmenting via the create_splits function.
-- Cleaning of the dataset has yet to be performed - TO-DO!!!
 
 ## Exploratory Data Analysis & Visualization
 
-TO-DO!!!
+Now that we have our raw dataset to work with, we begin by looking at:
+- The different types of data present.
+- How they might be relevant to our task.
+- Their respective distributions and whether there might be class imbalances.
+- Missing data and other considerations to be had later during cleaning.
+
+## Data Cleaning and Feature Engineering 
+
+After the EDA step, we have generated insights from the data in terms of their distribution and relevance our overall task. The functions in this package perform the following functions to clean and feature engineer the raw data:
+- Drop columns which are irrelevant 
+- For columns/features with missing data, how to replace missing data.
+- For columns/features with json objects, unpack the json objects into new columns.
+- For categorical features, ensure that they are categoized accordingly.
+- For continuous features, ensure that they are normalized and standardized.
+- Separate out examples with and without taglines.
+- Save the dataset into separate train, valid, test and tagless csv files.
 
 ## Modelling
 
