@@ -81,9 +81,8 @@ nb_path: "01_extract.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;your_api_key_here&quot;</span>
-<span class="n">max_ds_size</span> <span class="o">=</span> <span class="mi">2000</span>
-<span class="n">max_threads</span> <span class="o">=</span> <span class="mi">1000</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">max_ds_size</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">max_threads</span> <span class="o">=</span> <span class="mi">8</span>
 <span class="n">movies</span> <span class="o">=</span> <span class="n">extract_dataset_threaded</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">,</span>
                                   <span class="n">max_ds_size</span><span class="o">=</span><span class="n">max_ds_size</span><span class="p">,</span>
                                   <span class="n">max_threads</span><span class="o">=</span><span class="n">max_threads</span><span class="p">)</span>
@@ -101,7 +100,7 @@ nb_path: "01_extract.ipynb"
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total number of examples downloaded is: 0
+<pre>Total number of examples downloaded is: 15
 </pre>
 </div>
 </div>
@@ -128,11 +127,93 @@ nb_path: "01_extract.ipynb"
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>adult</th>
+      <th>backdrop_path</th>
+      <th>belongs_to_collection</th>
+      <th>budget</th>
+      <th>genres</th>
+      <th>...</th>
+      <th>tagline</th>
+      <th>title</th>
+      <th>video</th>
+      <th>vote_average</th>
+      <th>vote_count</th>
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>/hQ4pYsIbP22TMXOUdSfC2mjWrO0.jpg</td>
+      <td>None</td>
+      <td>0</td>
+      <td>[{'id': 18, 'name': 'Drama'}, {'id': 80, 'name...</td>
+      <td>...</td>
+      <td></td>
+      <td>Ariel</td>
+      <td>False</td>
+      <td>6.8</td>
+      <td>128</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>/l94l89eMmFKh7na2a1u5q67VgNx.jpg</td>
+      <td>None</td>
+      <td>0</td>
+      <td>[{'id': 18, 'name': 'Drama'}, {'id': 35, 'name...</td>
+      <td>...</td>
+      <td></td>
+      <td>Shadows in Paradise</td>
+      <td>False</td>
+      <td>7.2</td>
+      <td>126</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>/u0zMKKpEdDWpOKmFW2sLbKKICJH.jpg</td>
+      <td>None</td>
+      <td>4000000</td>
+      <td>[{'id': 80, 'name': 'Crime'}, {'id': 35, 'name...</td>
+      <td>...</td>
+      <td>Twelve outrageous guests. Four scandalous requ...</td>
+      <td>Four Rooms</td>
+      <td>False</td>
+      <td>5.7</td>
+      <td>1910</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>False</td>
+      <td>/5aXp2s4l6g5PcMMesIj63mx8hmJ.jpg</td>
+      <td>None</td>
+      <td>21000000</td>
+      <td>[{'id': 28, 'name': 'Action'}, {'id': 53, 'nam...</td>
+      <td>...</td>
+      <td>Don't move. Don't whisper. Don't even breathe.</td>
+      <td>Judgment Night</td>
+      <td>False</td>
+      <td>6.5</td>
+      <td>184</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>False</td>
+      <td>None</td>
+      <td>None</td>
+      <td>42000</td>
+      <td>[{'id': 99, 'name': 'Documentary'}]</td>
+      <td>...</td>
+      <td>A Megacities remix.</td>
+      <td>Life in Loops (A Megacities RMX)</td>
+      <td>False</td>
+      <td>7.4</td>
+      <td>14</td>
+    </tr>
   </tbody>
 </table>
+<p>5 rows × 25 columns</p>
 </div>
 </div>
 
