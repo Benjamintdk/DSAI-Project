@@ -2,7 +2,6 @@
   "DSAI_proj": {
     "Overview": "/",
     "Data Extraction and Cleaning": "extract.html",
-    "Data Cleaning and Feature Engineering": "clean.html",
-    "Modelling": "model.html"
+    "Data Cleaning and Feature Engineering": "clean.html"
   }
 }

@@ -15,9 +15,6 @@ entries:
     - output: web,pdf
       title: Data Cleaning and Feature Engineering
       url: clean.html
-    - output: web,pdf
-      title: Modelling
-      url: model.html
     output: web
     title: DSAI_proj
   output: web

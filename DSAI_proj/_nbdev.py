@@ -6,8 +6,9 @@ index = {"extract_dataset": "00_extract.ipynb",
          "save_to_csv": "00_extract.ipynb",
          "extract_dataset_threaded": "00_extract.ipynb",
          "clean_genre": "02_clean.ipynb",
-         "extract_backdrop_img": "02_clean.ipynb",
-         "extract_poster_img": "02_clean.ipynb",
+         "req_image": "02_clean.ipynb",
+         "extract_images_threaded": "02_clean.ipynb",
+         "split_datetime": "02_clean.ipynb",
          "drop_col": "02_clean.ipynb",
          "create_splits": "02_clean.ipynb"}
 
