@@ -10,10 +10,16 @@ index = {"extract_dataset": "00_extract.ipynb",
          "extract_images_threaded": "02_clean.ipynb",
          "split_datetime": "02_clean.ipynb",
          "drop_col": "02_clean.ipynb",
-         "create_splits": "02_clean.ipynb"}
+         "create_splits": "02_clean.ipynb",
+         "MovieDataset": "03_dataset.ipynb",
+         "Tokenize": "03_dataset.ipynb",
+         "RandomResizeCrop": "03_dataset.ipynb",
+         "ToTensor": "03_dataset.ipynb",
+         "NormalizeStandardize": "03_dataset.ipynb"}
 
 modules = ["extract.py",
-           "clean.py"]
+           "clean.py",
+           "dataset.py"]
 
 doc_url = "https://Benjamintdk.github.io/DSAI_proj/"
 
