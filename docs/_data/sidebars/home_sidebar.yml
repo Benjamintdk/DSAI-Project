@@ -13,8 +13,14 @@ entries:
       title: Data Extraction and Cleaning
       url: extract.html
     - output: web,pdf
+      title: Exploratory Data Analysis and Visualization
+      url: eda.html
+    - output: web,pdf
       title: Data Cleaning and Feature Engineering
       url: clean.html
+    - output: web,pdf
+      title: Dataset
+      url: dataset.html
     output: web
     title: DSAI_proj
   output: web

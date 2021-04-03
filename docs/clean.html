@@ -29,44 +29,30 @@ nb_path: "02_clean.ipynb"
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;raw_data.csv&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The first step will be to process the categorical variables of the dataset. In this case, we have genres as a categorical variable. We will use the MultiLabelBinarizer from scikit-learn to one-hot-encode the movie genres. This will create additional columns in our DataFrame, each corresponding to a separate genre type.</p>
+<p>The first step will be to process the categorical variables of the dataset. In this case, we have genres as a categorical variable. We will use the MultiLabelBinarizer from scikit-learn to one-hot-encode the movie genres. This will create additional columns in our DataFrame, each corresponding to a separate genre type. We will reuse the clean_genre function used in the EDA section.</p>
 
 </div>
 </div>
 </div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="clean_genre" class="doc_header"><code>clean_genre</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L20" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>clean_genre</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -107,13 +93,11 @@ nb_path: "02_clean.ipynb"
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>Unnamed: 0</th>
       <th>adult</th>
       <th>backdrop_path</th>
       <th>belongs_to_collection</th>
-      <th>budget</th>
-      <th>homepage</th>
       <th>...</th>
-      <th>Horror</th>
       <th>Mystery</th>
       <th>Romance</th>
       <th>Science Fiction</th>
@@ -123,13 +107,11 @@ nb_path: "02_clean.ipynb"
   <tbody>
     <tr>
       <th>0</th>
+      <td>0</td>
       <td>False</td>
       <td>/hQ4pYsIbP22TMXOUdSfC2mjWrO0.jpg</td>
-      <td>None</td>
-      <td>0</td>
-      <td></td>
+      <td>NaN</td>
       <td>...</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -137,13 +119,11 @@ nb_path: "02_clean.ipynb"
     </tr>
     <tr>
       <th>1</th>
+      <td>1</td>
       <td>False</td>
       <td>/l94l89eMmFKh7na2a1u5q67VgNx.jpg</td>
-      <td>None</td>
-      <td>0</td>
-      <td></td>
+      <td>NaN</td>
       <td>...</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -151,13 +131,11 @@ nb_path: "02_clean.ipynb"
     </tr>
     <tr>
       <th>2</th>
+      <td>2</td>
       <td>False</td>
       <td>/u0zMKKpEdDWpOKmFW2sLbKKICJH.jpg</td>
-      <td>None</td>
-      <td>4000000</td>
-      <td></td>
+      <td>NaN</td>
       <td>...</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -165,13 +143,11 @@ nb_path: "02_clean.ipynb"
     </tr>
     <tr>
       <th>3</th>
+      <td>3</td>
       <td>False</td>
       <td>/5aXp2s4l6g5PcMMesIj63mx8hmJ.jpg</td>
-      <td>None</td>
-      <td>21000000</td>
-      <td></td>
+      <td>NaN</td>
       <td>...</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -179,13 +155,11 @@ nb_path: "02_clean.ipynb"
     </tr>
     <tr>
       <th>4</th>
+      <td>4</td>
       <td>False</td>
-      <td>None</td>
-      <td>None</td>
-      <td>42000</td>
-      <td>http://www.lifeinloops.com</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -193,7 +167,7 @@ nb_path: "02_clean.ipynb"
     </tr>
   </tbody>
 </table>
-<p>5 rows × 38 columns</p>
+<p>5 rows × 39 columns</p>
 </div>
 </div>
 
@@ -207,7 +181,7 @@ nb_path: "02_clean.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we will need to extract the images into a separate directory. This will allow for easie access during the training stage. The following codes help us to extract the backdrop and poster images from their urls to separate directories.</p>
+<p>Next, we will need to extract the images into a separate directory. This will allow for easier access during the training stage. The following codes help us to extract the backdrop and poster images from their urls to separate directories. We can multithread this function as well as it involves multiple IO operations. Additionally, as some examples will not have images, we will drop these examples.</p>
 
 </div>
 </div>
@@ -223,31 +197,7 @@ nb_path: "02_clean.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="extract_backdrop_img" class="doc_header"><code>extract_backdrop_img</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L33" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>extract_backdrop_img</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>save_path</code></strong>:<code>str</code>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="extract_poster_img" class="doc_header"><code>extract_poster_img</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L46" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>extract_poster_img</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>save_path</code></strong>:<code>str</code>)</p>
+<h4 id="extract_images_threaded" class="doc_header"><code>extract_images_threaded</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L33" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>extract_images_threaded</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>cur_path</code></strong>:<code>str</code>, <strong><code>img_type</code></strong>:<code>list</code>, <strong><code>max_threads</code></strong>:<code>int</code>)</p>
 </blockquote>
 
 </div>
@@ -274,8 +224,8 @@ nb_path: "02_clean.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">extract_backdrop_img</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
-<span class="n">extract_poster_img</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">,</span> <span class="n">problem_ids</span> <span class="o">=</span> <span class="n">extract_images_threaded</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">cur_path</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">img_type</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;poster&quot;</span><span class="p">,</span> <span class="s2">&quot;backdrop&quot;</span><span class="p">],</span> <span class="n">max_threads</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dropped the following rows due to missing images: </span><span class="si">{</span><span class="n">problem_ids</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -288,8 +238,9 @@ nb_path: "02_clean.ipynb"
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>All backdrop images written successfully!
-All poster images written successfully!
+<pre>poster images written successfully!
+backdrop images written successfully!
+Dropped the following rows due to missing images: {8, 9}
 </pre>
 </div>
 </div>
@@ -302,7 +253,7 @@ All poster images written successfully!
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Lastly, from the previous notebook on EDA, we have already identified the relevant and irrelevant features required for our tagline prediction task. We will now drop the columns or features that are irrelevant. We can also include the image url paths to be dropped as we have already extracted the necessary images into a separate folder.</p>
+<p>Lastly, from the previous notebook on EDA, we have already identified the relevant and irrelevant features required for our tagline prediction task. We will now drop the columns or features that are irrelevant. We can also include the image url paths to be dropped as we have already extracted the necessary images into a separate folder. Additionally, we also feature engineer based on the release dates to split that column into year, month and day separately. This generally allows models to process such meta information better.</p>
 
 </div>
 </div>
@@ -318,7 +269,7 @@ All poster images written successfully!
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="drop_col" class="doc_header"><code>drop_col</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L61" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>drop_col</code>(<strong><code>data</code></strong>:<code>DataFrame</code>, <strong><code>irrelevant_cols</code></strong>:<code>list</code>)</p>
+<h4 id="drop_col" class="doc_header"><code>drop_col</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L64" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>drop_col</code>(<strong><code>data</code></strong>:<code>DataFrame</code>, <strong><code>irrelevant_cols</code></strong>:<code>list</code>)</p>
 </blockquote>
 
 </div>
@@ -381,15 +332,15 @@ All poster images written successfully!
       <th></th>
       <th>id</th>
       <th>overview</th>
-      <th>release_date</th>
       <th>tagline</th>
       <th>title</th>
+      <th>Action</th>
       <th>...</th>
-      <th>Horror</th>
-      <th>Mystery</th>
-      <th>Romance</th>
       <th>Science Fiction</th>
       <th>Thriller</th>
+      <th>release_date_year</th>
+      <th>release_date_month</th>
+      <th>release_date_day</th>
     </tr>
   </thead>
   <tbody>
@@ -397,75 +348,75 @@ All poster images written successfully!
       <th>0</th>
       <td>2</td>
       <td>Taisto Kasurinen is a Finnish coal miner whose...</td>
-      <td>1988-10-21</td>
       <td></td>
       <td>Ariel</td>
+      <td>0</td>
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1988</td>
+      <td>10</td>
+      <td>21</td>
     </tr>
     <tr>
       <th>1</th>
       <td>3</td>
       <td>An episode in the life of Nikander, a garbage ...</td>
-      <td>1986-10-17</td>
       <td></td>
       <td>Shadows in Paradise</td>
+      <td>0</td>
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1986</td>
+      <td>10</td>
+      <td>17</td>
     </tr>
     <tr>
       <th>2</th>
       <td>5</td>
       <td>It's Ted the Bellhop's first night on the job....</td>
-      <td>1995-12-09</td>
       <td>Twelve outrageous guests. Four scandalous requ...</td>
       <td>Four Rooms</td>
+      <td>0</td>
       <td>...</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1995</td>
+      <td>12</td>
+      <td>9</td>
     </tr>
     <tr>
       <th>3</th>
       <td>6</td>
       <td>While racing to a boxing match, Frank, Mike, J...</td>
-      <td>1993-10-15</td>
       <td>Don't move. Don't whisper. Don't even breathe.</td>
       <td>Judgment Night</td>
+      <td>1</td>
       <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>1993</td>
+      <td>10</td>
+      <td>15</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>8</td>
-      <td>Timo Novotny labels his new project an experim...</td>
-      <td>2006-01-01</td>
-      <td>A Megacities remix.</td>
-      <td>Life in Loops (A Megacities RMX)</td>
+      <th>6</th>
+      <td>11</td>
+      <td>Princess Leia is captured and held hostage by ...</td>
+      <td>A long time ago in a galaxy far, far away...</td>
+      <td>Star Wars</td>
+      <td>1</td>
       <td>...</td>
+      <td>1</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1977</td>
+      <td>5</td>
+      <td>25</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 19 columns</p>
+<p>5 rows × 21 columns</p>
 </div>
 </div>
 
@@ -502,7 +453,7 @@ All poster images written successfully!
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="create_splits" class="doc_header"><code>create_splits</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L70" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_splits</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>label</code></strong>:<code>str</code>, <strong><code>splits</code></strong>:<code>list</code>, <strong><code>seed</code></strong>:<code>int</code>, <strong><code>keep_missing</code></strong>:<code>bool</code>, <strong><code>save_path</code></strong>:<code>str</code>=<em><code>'.'</code></em>)</p>
+<h4 id="create_splits" class="doc_header"><code>create_splits</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L73" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_splits</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>label</code></strong>:<code>str</code>, <strong><code>splits</code></strong>:<code>list</code>, <strong><code>seed</code></strong>:<code>int</code>, <strong><code>keep_missing</code></strong>:<code>bool</code>, <strong><code>save_path</code></strong>:<code>str</code>=<em><code>'.'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -549,9 +500,9 @@ All poster images written successfully!
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Tagless set size: 3
+<pre>Tagless set size: 2
 Tagless dataset created!
-Train set size: 8
+Train set size: 7
 Valid set size: 2
 Test set size: 2
 Train, Validation and Test datasets created!
