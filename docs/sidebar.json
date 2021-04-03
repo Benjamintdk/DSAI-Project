@@ -2,6 +2,7 @@
   "DSAI_proj": {
     "Overview": "/",
     "Data Extraction and Cleaning": "extract.html",
+    "Exploratory Data Analysis and Visualization": "eda.html",
     "Data Cleaning and Feature Engineering": "clean.html",
     "Dataset": "dataset.html"
   }

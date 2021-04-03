@@ -29,44 +29,30 @@ nb_path: "02_clean.ipynb"
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;raw_data.csv&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The first step will be to process the categorical variables of the dataset. In this case, we have genres as a categorical variable. We will use the MultiLabelBinarizer from scikit-learn to one-hot-encode the movie genres. This will create additional columns in our DataFrame, each corresponding to a separate genre type.</p>
+<p>The first step will be to process the categorical variables of the dataset. In this case, we have genres as a categorical variable. We will use the MultiLabelBinarizer from scikit-learn to one-hot-encode the movie genres. This will create additional columns in our DataFrame, each corresponding to a separate genre type. We will reuse the clean_genre function used in the EDA section.</p>
 
 </div>
 </div>
 </div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="clean_genre" class="doc_header"><code>clean_genre</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L20" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>clean_genre</code>(<strong><code>df</code></strong>:<code>DataFrame</code>)</p>
-</blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -107,13 +93,11 @@ nb_path: "02_clean.ipynb"
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>Unnamed: 0</th>
       <th>adult</th>
       <th>backdrop_path</th>
       <th>belongs_to_collection</th>
-      <th>budget</th>
-      <th>homepage</th>
       <th>...</th>
-      <th>Horror</th>
       <th>Mystery</th>
       <th>Romance</th>
       <th>Science Fiction</th>
@@ -123,13 +107,11 @@ nb_path: "02_clean.ipynb"
   <tbody>
     <tr>
       <th>0</th>
+      <td>0</td>
       <td>False</td>
       <td>/hQ4pYsIbP22TMXOUdSfC2mjWrO0.jpg</td>
-      <td>None</td>
-      <td>0</td>
-      <td></td>
+      <td>NaN</td>
       <td>...</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -137,13 +119,11 @@ nb_path: "02_clean.ipynb"
     </tr>
     <tr>
       <th>1</th>
+      <td>1</td>
       <td>False</td>
       <td>/l94l89eMmFKh7na2a1u5q67VgNx.jpg</td>
-      <td>None</td>
-      <td>0</td>
-      <td></td>
+      <td>NaN</td>
       <td>...</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -151,13 +131,11 @@ nb_path: "02_clean.ipynb"
     </tr>
     <tr>
       <th>2</th>
+      <td>2</td>
       <td>False</td>
       <td>/u0zMKKpEdDWpOKmFW2sLbKKICJH.jpg</td>
-      <td>None</td>
-      <td>4000000</td>
-      <td></td>
+      <td>NaN</td>
       <td>...</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -165,13 +143,11 @@ nb_path: "02_clean.ipynb"
     </tr>
     <tr>
       <th>3</th>
+      <td>3</td>
       <td>False</td>
       <td>/5aXp2s4l6g5PcMMesIj63mx8hmJ.jpg</td>
-      <td>None</td>
-      <td>21000000</td>
-      <td></td>
+      <td>NaN</td>
       <td>...</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -179,13 +155,11 @@ nb_path: "02_clean.ipynb"
     </tr>
     <tr>
       <th>4</th>
+      <td>4</td>
       <td>False</td>
-      <td>None</td>
-      <td>None</td>
-      <td>42000</td>
-      <td>http://www.lifeinloops.com</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -193,7 +167,7 @@ nb_path: "02_clean.ipynb"
     </tr>
   </tbody>
 </table>
-<p>5 rows × 38 columns</p>
+<p>5 rows × 39 columns</p>
 </div>
 </div>
 
@@ -223,7 +197,7 @@ nb_path: "02_clean.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="extract_images_threaded" class="doc_header"><code>extract_images_threaded</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L46" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>extract_images_threaded</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>cur_path</code></strong>:<code>str</code>, <strong><code>img_type</code></strong>:<code>list</code>, <strong><code>max_threads</code></strong>:<code>int</code>)</p>
+<h4 id="extract_images_threaded" class="doc_header"><code>extract_images_threaded</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L33" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>extract_images_threaded</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>cur_path</code></strong>:<code>str</code>, <strong><code>img_type</code></strong>:<code>list</code>, <strong><code>max_threads</code></strong>:<code>int</code>)</p>
 </blockquote>
 
 </div>
@@ -295,7 +269,7 @@ Dropped the following rows due to missing images: {8, 9}
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="drop_col" class="doc_header"><code>drop_col</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L77" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>drop_col</code>(<strong><code>data</code></strong>:<code>DataFrame</code>, <strong><code>irrelevant_cols</code></strong>:<code>list</code>)</p>
+<h4 id="drop_col" class="doc_header"><code>drop_col</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L64" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>drop_col</code>(<strong><code>data</code></strong>:<code>DataFrame</code>, <strong><code>irrelevant_cols</code></strong>:<code>list</code>)</p>
 </blockquote>
 
 </div>
@@ -479,7 +453,7 @@ Dropped the following rows due to missing images: {8, 9}
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="create_splits" class="doc_header"><code>create_splits</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L86" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_splits</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>label</code></strong>:<code>str</code>, <strong><code>splits</code></strong>:<code>list</code>, <strong><code>seed</code></strong>:<code>int</code>, <strong><code>keep_missing</code></strong>:<code>bool</code>, <strong><code>save_path</code></strong>:<code>str</code>=<em><code>'.'</code></em>)</p>
+<h4 id="create_splits" class="doc_header"><code>create_splits</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L73" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_splits</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>label</code></strong>:<code>str</code>, <strong><code>splits</code></strong>:<code>list</code>, <strong><code>seed</code></strong>:<code>int</code>, <strong><code>keep_missing</code></strong>:<code>bool</code>, <strong><code>save_path</code></strong>:<code>str</code>=<em><code>'.'</code></em>)</p>
 </blockquote>
 
 </div>

@@ -15,6 +15,7 @@ torch = {file = "https://download.pytorch.org/whl/cu101/torch-1.5.0%2Bcu101-cp38
 torchvision = {file = "https://download.pytorch.org/whl/cu101/torchvision-0.6.0%2Bcu101-cp38-cp38-linux_x86_64.whl"}
 fastai = "*"
 transformers = "*"
+seaborn = "*"
 
 [dev-packages]
 

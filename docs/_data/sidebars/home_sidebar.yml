@@ -13,6 +13,9 @@ entries:
       title: Data Extraction and Cleaning
       url: extract.html
     - output: web,pdf
+      title: Exploratory Data Analysis and Visualization
+      url: eda.html
+    - output: web,pdf
       title: Data Cleaning and Feature Engineering
       url: clean.html
     - output: web,pdf
