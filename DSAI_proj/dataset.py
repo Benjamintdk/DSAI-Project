@@ -66,8 +66,8 @@ class Tokenize(object):
         self.max_length = max_length
 
     def __call__(self, x: dict) -> dict:
-        x['labels'] = self.tokenizer(x['labels'], return_tensors='pt', max_length=self.max_length, padding='max_length')
-        x['text_inputs'] = self.tokenizer(x['text_inputs'], return_tensors='pt', max_length=self.max_length, padding='max_length')
+        x['labels'] = self.tokenizer(x['labels'], return_tensors='pt', max_length=self.max_length, padding='max_length', truncation=True)['input_ids'].squeeze()
+        x['text_inputs'] = self.tokenizer(x['text_inputs'], return_tensors='pt', max_length=self.max_length, padding='max_length', truncation=True)['input_ids'].squeeze()
         return x
 
 # Cell

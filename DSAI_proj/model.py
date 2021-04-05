@@ -7,7 +7,7 @@ __all__ = ['cnn_encoder', 'text_encoder', 'meta_encoder', 'decoder']
 from transformers import DistilBertModel, DistilBertTokenizer
 from .dataset import *
 from torch import nn
-from torch.utils.data import DataLoader
+from fastai.data.core import DataLoaders
 from functools import partial
 from PIL import Image
 import torchvision.models as models
