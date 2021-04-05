@@ -16,12 +16,19 @@ index = {"extract_dataset": "00_extract.ipynb",
          "Tokenize": "03_dataset.ipynb",
          "RandomResizeCrop": "03_dataset.ipynb",
          "ToTensor": "03_dataset.ipynb",
-         "NormalizeStandardize": "03_dataset.ipynb"}
+         "NormalizeStandardize": "03_dataset.ipynb",
+         "Compose": "03_dataset.ipynb",
+         "freeze_all_but_layer": "04_model.ipynb",
+         "cnn_encoder": "04_model.ipynb",
+         "text_encoder": "04_model.ipynb",
+         "meta_encoder": "04_model.ipynb",
+         "decoder": "04_model.ipynb"}
 
 modules = ["extract.py",
            "eda.py",
            "clean.py",
-           "dataset.py"]
+           "dataset.py",
+           "model.py"]
 
 doc_url = "https://Benjamintdk.github.io/DSAI_proj/"
 
