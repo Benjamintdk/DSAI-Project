@@ -16,6 +16,7 @@ torchvision = {file = "https://download.pytorch.org/whl/cu101/torchvision-0.6.0%
 fastai = "*"
 transformers = "*"
 seaborn = "*"
+nltk = "*"
 
 [dev-packages]
 

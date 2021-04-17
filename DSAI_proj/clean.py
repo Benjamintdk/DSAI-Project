@@ -50,6 +50,10 @@ def extract_images_threaded(df: DataFrame,
 
 # Internal Cell
 
+def drop_missing(df: DataFrame, cols: list) -> DataFrame:
+    df.dropna(subset=cols, inplace=True)
+    return df
+
 def split_datetime(df: DataFrame,
                    date_col: str) -> DataFrame:
     df[date_col] = pd.to_datetime(df[date_col], format='%Y-%m-%d')
@@ -57,13 +61,22 @@ def split_datetime(df: DataFrame,
     df[f"{date_col}_month"] = df[date_col].dt.month
     df[f"{date_col}_day"] = df[date_col].dt.day
     df.drop(date_col, inplace=True, axis=1)
+
+    day_bins = [0, 10, 20, 31]
+    day_labels = [1, 2, 3]
+    year_bins = [1900, 1940, 1960, 1980, 2000, 2020]
+    year_labels = [1, 2, 3, 4, 5]
+    df[f"{date_col}_day"]  = pd.cut(df[f"{date_col}_day"], bins=day_bins, labels=day_labels)
+    df[f"{date_col}_year"] = pd.cut(df[f"{date_col}_year"], bins=year_bins, labels=year_labels)
     return df
 
 # Cell
 
 def drop_col(data: DataFrame,
-             irrelevant_cols: list) -> DataFrame:
-    df = data.drop(irrelevant_cols,axis = 1)
+             irrelevant_cols: list,
+             relevant_cols: list) -> DataFrame:
+    df = data.drop(irrelevant_cols, axis = 1)
+    df = drop_missing(df=df, cols=relevant_cols)
     df = split_datetime(df=df, date_col="release_date")
     df = df.drop(df.columns[0], axis=1)
     return df

@@ -36,24 +36,6 @@ nb_path: "02_clean.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
-<span class="o">%</span><span class="k">autoreload</span> 2
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">movies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;raw_data.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -116,10 +98,10 @@ nb_path: "02_clean.ipynb"
       <th>backdrop_path</th>
       <th>belongs_to_collection</th>
       <th>...</th>
-      <th>Mystery</th>
-      <th>Romance</th>
-      <th>Science Fiction</th>
+      <th>TV Movie</th>
       <th>Thriller</th>
+      <th>War</th>
+      <th>Western</th>
     </tr>
   </thead>
   <tbody>
@@ -167,9 +149,9 @@ nb_path: "02_clean.ipynb"
       <td>NaN</td>
       <td>...</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>4</th>
@@ -185,7 +167,7 @@ nb_path: "02_clean.ipynb"
     </tr>
   </tbody>
 </table>
-<p>5 rows × 39 columns</p>
+<p>5 rows × 44 columns</p>
 </div>
 </div>
 
@@ -242,8 +224,8 @@ nb_path: "02_clean.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">,</span> <span class="n">problem_ids</span> <span class="o">=</span> <span class="n">extract_images_threaded</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">cur_path</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">img_type</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;poster&quot;</span><span class="p">,</span> <span class="s2">&quot;backdrop&quot;</span><span class="p">],</span> <span class="n">max_threads</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dropped the following rows due to missing images: </span><span class="si">{</span><span class="n">problem_ids</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">,</span> <span class="n">problem_ids</span> <span class="o">=</span> <span class="n">extract_images_threaded</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">cur_path</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">img_type</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;poster&quot;</span><span class="p">,</span> <span class="s2">&quot;backdrop&quot;</span><span class="p">],</span> <span class="n">max_threads</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of rows dropped due to missing images: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">problem_ids</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -256,9 +238,7 @@ nb_path: "02_clean.ipynb"
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>poster images written successfully!
-backdrop images written successfully!
-Dropped the following rows due to missing images: {8, 9}
+<pre>Number of rows dropped due to missing images: 1118
 </pre>
 </div>
 </div>
@@ -271,7 +251,9 @@ Dropped the following rows due to missing images: {8, 9}
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Lastly, from the previous notebook on EDA, we have already identified the relevant and irrelevant features required for our tagline prediction task. We will now drop the columns or features that are irrelevant. We can also include the image url paths to be dropped as we have already extracted the necessary images into a separate folder. Additionally, we also feature engineer based on the release dates to split that column into year, month and day separately. This generally allows models to process such meta information better.</p>
+<p>Lastly, from the previous notebook on EDA, we have already identified the relevant and irrelevant features required for our tagline prediction task. We will now drop the columns or features that are irrelevant. We can also include the image url paths to be dropped as we have already extracted the necessary images into a separate folder.</p>
+<p>Additionally, we also feature engineer based on the release dates to split that column into year, month and day separately. This generally allows models to process such meta information better. We also bin the year and day as per the EDA; we will leave the months as it is as the values are generally small and in the range of the other variables.</p>
+<p>Speaking of dropped rows, let's also drop the rows which are missing information in the important columns identified during EDA.</p>
 
 </div>
 </div>
@@ -287,7 +269,7 @@ Dropped the following rows due to missing images: {8, 9}
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="drop_col" class="doc_header"><code>drop_col</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L64" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>drop_col</code>(<strong><code>data</code></strong>:<code>DataFrame</code>, <strong><code>irrelevant_cols</code></strong>:<code>list</code>)</p>
+<h4 id="drop_col" class="doc_header"><code>drop_col</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L75" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>drop_col</code>(<strong><code>data</code></strong>:<code>DataFrame</code>, <strong><code>irrelevant_cols</code></strong>:<code>list</code>, <strong><code>relevant_cols</code></strong>:<code>list</code>)</p>
 </blockquote>
 
 </div>
@@ -314,8 +296,9 @@ Dropped the following rows due to missing images: {8, 9}
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">irrelevant_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;belongs_to_collection&#39;</span><span class="p">,</span><span class="s1">&#39;homepage&#39;</span><span class="p">,</span><span class="s1">&#39;imdb_id&#39;</span><span class="p">,</span><span class="s1">&#39;production_companies&#39;</span><span class="p">,</span><span class="s1">&#39;popularity&#39;</span><span class="p">,</span><span class="s1">&#39;original_language&#39;</span><span class="p">,</span><span class="s1">&#39;original_title&#39;</span><span class="p">,</span><span class="s1">&#39;revenue&#39;</span><span class="p">,</span><span class="s1">&#39;runtime&#39;</span><span class="p">,</span><span class="s1">&#39;spoken_languages&#39;</span><span class="p">,</span><span class="s1">&#39;status&#39;</span><span class="p">,</span><span class="s1">&#39;video&#39;</span><span class="p">,</span><span class="s1">&#39;vote_average&#39;</span><span class="p">,</span><span class="s1">&#39;vote_count&#39;</span><span class="p">,</span><span class="s1">&#39;production_countries&#39;</span><span class="p">,</span><span class="s1">&#39;budget&#39;</span><span class="p">,</span> <span class="s1">&#39;poster_path&#39;</span><span class="p">,</span> <span class="s1">&#39;backdrop_path&#39;</span><span class="p">]</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">drop_col</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">irrelevant_cols</span><span class="o">=</span><span class="n">irrelevant_columns</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">irrelevant_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;adult&#39;</span><span class="p">,</span> <span class="s1">&#39;belongs_to_collection&#39;</span><span class="p">,</span><span class="s1">&#39;homepage&#39;</span><span class="p">,</span><span class="s1">&#39;imdb_id&#39;</span><span class="p">,</span><span class="s1">&#39;production_companies&#39;</span><span class="p">,</span><span class="s1">&#39;popularity&#39;</span><span class="p">,</span><span class="s1">&#39;original_language&#39;</span><span class="p">,</span><span class="s1">&#39;original_title&#39;</span><span class="p">,</span><span class="s1">&#39;revenue&#39;</span><span class="p">,</span><span class="s1">&#39;runtime&#39;</span><span class="p">,</span><span class="s1">&#39;spoken_languages&#39;</span><span class="p">,</span><span class="s1">&#39;status&#39;</span><span class="p">,</span><span class="s1">&#39;video&#39;</span><span class="p">,</span><span class="s1">&#39;vote_average&#39;</span><span class="p">,</span><span class="s1">&#39;vote_count&#39;</span><span class="p">,</span><span class="s1">&#39;production_countries&#39;</span><span class="p">,</span><span class="s1">&#39;budget&#39;</span><span class="p">,</span> <span class="s1">&#39;poster_path&#39;</span><span class="p">,</span> <span class="s1">&#39;backdrop_path&#39;</span><span class="p">]</span>
+<span class="n">relevant_columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">irrelevant_columns</span><span class="p">))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">drop_col</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">irrelevant_cols</span><span class="o">=</span><span class="n">irrelevant_columns</span><span class="p">,</span> <span class="n">relevant_cols</span><span class="o">=</span><span class="n">relevant_columns</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
@@ -348,14 +331,12 @@ Dropped the following rows due to missing images: {8, 9}
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>adult</th>
       <th>id</th>
       <th>overview</th>
       <th>tagline</th>
-      <th>title</th>
-      <th>Action</th>
       <th>...</th>
-      <th>Science Fiction</th>
-      <th>Thriller</th>
+      <th>Western</th>
       <th>release_date_year</th>
       <th>release_date_month</th>
       <th>release_date_day</th>
@@ -363,78 +344,68 @@ Dropped the following rows due to missing images: {8, 9}
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>2</td>
-      <td>Taisto Kasurinen is a Finnish coal miner whose...</td>
-      <td></td>
-      <td>Ariel</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1988</td>
-      <td>10</td>
-      <td>21</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>3</td>
-      <td>An episode in the life of Nikander, a garbage ...</td>
-      <td></td>
-      <td>Shadows in Paradise</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1986</td>
-      <td>10</td>
-      <td>17</td>
-    </tr>
-    <tr>
       <th>2</th>
+      <td>False</td>
       <td>5</td>
       <td>It's Ted the Bellhop's first night on the job....</td>
       <td>Twelve outrageous guests. Four scandalous requ...</td>
-      <td>Four Rooms</td>
-      <td>0</td>
       <td>...</td>
       <td>0</td>
-      <td>0</td>
-      <td>1995</td>
+      <td>4</td>
       <td>12</td>
-      <td>9</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>3</th>
+      <td>False</td>
       <td>6</td>
       <td>While racing to a boxing match, Frank, Mike, J...</td>
       <td>Don't move. Don't whisper. Don't even breathe.</td>
-      <td>Judgment Night</td>
-      <td>1</td>
       <td>...</td>
       <td>0</td>
-      <td>1</td>
-      <td>1993</td>
+      <td>4</td>
       <td>10</td>
-      <td>15</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>False</td>
+      <td>8</td>
+      <td>Timo Novotny labels his new project an experim...</td>
+      <td>A Megacities remix.</td>
+      <td>...</td>
+      <td>0</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>6</th>
+      <td>False</td>
       <td>11</td>
       <td>Princess Leia is captured and held hostage by ...</td>
       <td>A long time ago in a galaxy far, far away...</td>
-      <td>Star Wars</td>
-      <td>1</td>
       <td>...</td>
-      <td>1</td>
       <td>0</td>
-      <td>1977</td>
+      <td>3</td>
       <td>5</td>
-      <td>25</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>False</td>
+      <td>12</td>
+      <td>Nemo, an adventurous young clownfish, is unexp...</td>
+      <td>There are 3.7 trillion fish in the ocean. They...</td>
+      <td>...</td>
+      <td>0</td>
+      <td>5</td>
+      <td>5</td>
+      <td>3</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 21 columns</p>
+<p>5 rows × 27 columns</p>
 </div>
 </div>
 
@@ -471,7 +442,7 @@ Dropped the following rows due to missing images: {8, 9}
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="create_splits" class="doc_header"><code>create_splits</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L73" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_splits</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>label</code></strong>:<code>str</code>, <strong><code>splits</code></strong>:<code>list</code>, <strong><code>seed</code></strong>:<code>int</code>, <strong><code>keep_missing</code></strong>:<code>bool</code>, <strong><code>save_path</code></strong>:<code>str</code>=<em><code>'.'</code></em>)</p>
+<h4 id="create_splits" class="doc_header"><code>create_splits</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/clean.py#L86" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>create_splits</code>(<strong><code>df</code></strong>:<code>DataFrame</code>, <strong><code>label</code></strong>:<code>str</code>, <strong><code>splits</code></strong>:<code>list</code>, <strong><code>seed</code></strong>:<code>int</code>, <strong><code>keep_missing</code></strong>:<code>bool</code>, <strong><code>save_path</code></strong>:<code>str</code>=<em><code>'.'</code></em>)</p>
 </blockquote>
 
 </div>
@@ -498,7 +469,7 @@ Dropped the following rows due to missing images: {8, 9}
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">splits</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">splits</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
 <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;tagline&quot;</span>
 <span class="n">seed</span> <span class="o">=</span> <span class="mi">42</span>
 <span class="n">create_splits</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
@@ -518,11 +489,11 @@ Dropped the following rows due to missing images: {8, 9}
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Tagless set size: 2
+<pre>Tagless set size: 0
 Tagless dataset created!
-Train set size: 7
-Valid set size: 2
-Test set size: 2
+Train set size: 2276
+Valid set size: 285
+Test set size: 285
 Train, Validation and Test datasets created!
 </pre>
 </div>

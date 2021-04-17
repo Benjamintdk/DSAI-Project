@@ -7,8 +7,10 @@ index = {"extract_dataset": "00_extract.ipynb",
          "extract_dataset_threaded": "00_extract.ipynb",
          "clean_genre": "01_eda.ipynb",
          "freq_words": "01_eda.ipynb",
+         "freq_words_sw": "01_eda.ipynb",
          "req_image": "02_clean.ipynb",
          "extract_images_threaded": "02_clean.ipynb",
+         "drop_missing": "02_clean.ipynb",
          "split_datetime": "02_clean.ipynb",
          "drop_col": "02_clean.ipynb",
          "create_splits": "02_clean.ipynb",
@@ -22,13 +24,17 @@ index = {"extract_dataset": "00_extract.ipynb",
          "cnn_encoder": "04_model.ipynb",
          "text_encoder": "04_model.ipynb",
          "meta_encoder": "04_model.ipynb",
-         "decoder": "04_model.ipynb"}
+         "decoder": "04_model.ipynb",
+         "TaglinePredictorModel": "04_model.ipynb",
+         "TagLineLoss": "05_train.ipynb",
+         "splitter_func": "05_train.ipynb"}
 
 modules = ["extract.py",
            "eda.py",
            "clean.py",
            "dataset.py",
-           "model.py"]
+           "model.py",
+           "train.py"]
 
 doc_url = "https://Benjamintdk.github.io/DSAI_proj/"
 
