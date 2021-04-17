@@ -143,3 +143,6 @@ checklink/cookies.txt
 
 # mini sample datasets
 *.csv
+
+# pytorch saved models
+*.pt

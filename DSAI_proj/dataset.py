@@ -33,7 +33,7 @@ class MovieDataset(Dataset):
     def __len__(self):
         return len(self.df)
 
-    def __getitem__(self, idx: int) -> dict:
+    def __getitem__(self, idx: int) -> tuple:
         """
         Returns a dict of 5 items:
         Poster Image, BackDrop Image, MetaData, Title+overview, label
@@ -54,20 +54,21 @@ class MovieDataset(Dataset):
                   "labels" : label}
 
         sample = self.transforms(sample)
-        return sample
+        return ((sample["poster_img"], sample["backdrop_img"], sample["text_inputs"], sample["meta"]), sample['labels'])
 
 # Cell
 
 # Tokenize concatenates the title and overview into a single example
 class Tokenize(object):
 
-    def __init__(self, tokenizer, max_length: int):
+    def __init__(self, tokenizer, input_max_length: int, labels_max_length: int):
         self.tokenizer = tokenizer
-        self.max_length = max_length
+        self.input_max_length = input_max_length
+        self.labels_max_length = labels_max_length
 
     def __call__(self, x: dict) -> dict:
-        x['labels'] = self.tokenizer(x['labels'], return_tensors='pt', max_length=self.max_length, padding='max_length', truncation=True)['input_ids'].squeeze()
-        x['text_inputs'] = self.tokenizer(x['text_inputs'], return_tensors='pt', max_length=self.max_length, padding='max_length', truncation=True)['input_ids'].squeeze()
+        x['labels'] = self.tokenizer(x['labels'], return_tensors='pt', max_length=self.labels_max_length, padding='max_length', truncation=True)['input_ids'].squeeze()
+        x['text_inputs'] = self.tokenizer(x['text_inputs'], return_tensors='pt', max_length=self.input_max_length, padding='max_length', truncation=True)['input_ids'].squeeze()
         return x
 
 # Cell

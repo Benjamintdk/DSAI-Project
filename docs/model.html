@@ -29,24 +29,6 @@ nb_path: "04_model.ipynb"
 </div>
     {% endraw %}
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
-<span class="o">%</span><span class="k">autoreload</span> 2
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="/DSAI_proj/model_diagram.jpg" alt=""></p>
@@ -72,7 +54,7 @@ nb_path: "04_model.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="cnn_encoder" class="doc_header"><code>cnn_encoder</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/model.py#L26" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cnn_encoder</code>(<strong><code>pretrained</code></strong>:<code>bool</code>, <strong><code>in_channels</code></strong>:<code>int</code>, <strong><code>out_channels</code></strong>:<code>int</code>)</p>
+<h4 id="cnn_encoder" class="doc_header"><code>cnn_encoder</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/model.py#L27" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cnn_encoder</code>(<strong><code>pretrained</code></strong>:<code>bool</code>, <strong><code>in_channels</code></strong>:<code>int</code>, <strong><code>out_channels</code></strong>:<code>int</code>)</p>
 </blockquote>
 
 </div>
@@ -110,7 +92,7 @@ nb_path: "04_model.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="text_encoder" class="doc_header"><code>text_encoder</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/model.py#L36" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>text_encoder</code>(<strong><code>model_type</code></strong>:<code>str</code>)</p>
+<h4 id="text_encoder" class="doc_header"><code>text_encoder</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/model.py#L37" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>text_encoder</code>(<strong><code>model_type</code></strong>:<code>str</code>)</p>
 </blockquote>
 
 </div>
@@ -148,7 +130,7 @@ nb_path: "04_model.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="meta_encoder" class="doc_header"><code>meta_encoder</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/model.py#L44" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>meta_encoder</code>(<strong><code>in_channels</code></strong>:<code>int</code>, <strong><code>out_channels</code></strong>:<code>int</code>)</p>
+<h4 id="meta_encoder" class="doc_header"><code>meta_encoder</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/model.py#L45" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>meta_encoder</code>(<strong><code>in_channels</code></strong>:<code>int</code>, <strong><code>out_channels</code></strong>:<code>int</code>)</p>
 </blockquote>
 
 </div>
@@ -186,7 +168,7 @@ nb_path: "04_model.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="decoder" class="doc_header"><code>decoder</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/model.py#L50" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>decoder</code>(<strong><code>hidden_dim</code></strong>:<code>int</code>, <strong><code>vocab_size</code></strong>:<code>int</code>)</p>
+<h4 id="decoder" class="doc_header"><code>decoder</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/model.py#L51" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>decoder</code>(<strong><code>cur_len</code></strong>:<code>int</code>, <strong><code>max_seq_len</code></strong>:<code>int</code>, <strong><code>hidden_dim</code></strong>:<code>int</code>, <strong><code>vocab_size</code></strong>:<code>int</code>)</p>
 </blockquote>
 
 </div>
@@ -209,35 +191,54 @@ nb_path: "04_model.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">TaglinePredictorModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="TaglinePredictorModel" class="doc_header"><code>class</code> <code>TaglinePredictorModel</code><a href="https://github.com/Benjamintdk/DSAI_proj/tree/main/DSAI_proj/model.py#L59" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>TaglinePredictorModel</code>(<strong><code>vocab_size</code></strong>:<code>int</code>, <strong><code>meta_features</code></strong>:<code>int</code>) :: <code>Module</code></p>
+</blockquote>
+<p>Base class for all neural network modules.</p>
+<p>Your models should also subclass this class.</p>
+<p>Modules can also contain other Modules, allowing to nest them in
+a tree structure. You can assign the submodules as regular attributes::</p>
+
+<pre><code>import torch.nn as nn
+import torch.nn.functional as F
+
+class Model(nn.Module):
+    def __init__(self):
+        super(Model, self).__init__()
+        self.conv1 = nn.Conv2d(1, 20, 5)
+        self.conv2 = nn.Conv2d(20, 20, 5)
+
+    def forward(self, x):
+        x = F.relu(self.conv1(x))
+        return F.relu(self.conv2(x))
+
+</code></pre>
+<p>Submodules assigned in this way will be registered, and will have their
+parameters converted too when you call :meth:<code>to</code>, etc.</p>
+<p>:ivar training: Boolean represents whether this module is in training or
+                evaluation mode.
+:vartype training: bool</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
     
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">meta_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">TaglinePredictorModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cnn_encoder</span> <span class="o">=</span> <span class="n">cnn_encoder</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">in_channels</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">768</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">text_encoder</span> <span class="o">=</span> <span class="n">text_encoder</span><span class="p">(</span><span class="n">model_type</span><span class="o">=</span><span class="s1">&#39;distilbert-base-uncased&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">meta_encoder</span> <span class="o">=</span> <span class="n">meta_encoder</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="n">meta_features</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">768</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">decoder</span><span class="p">(</span><span class="n">hidden_dim</span><span class="o">=</span><span class="mi">768</span><span class="p">,</span> <span class="n">vocab_size</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">)</span>
-        
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="n">poster_feature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cnn_encoder</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;poster_img&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">backdrop_feature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cnn_encoder</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;backdrop_img&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">text_feature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_encoder</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;text_inputs&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">last_hidden_state</span>
-        <span class="n">meta_feature</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta_encoder</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;meta&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        
-        <span class="n">poster_feat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">poster_feature</span><span class="p">)</span>
-        <span class="n">backdrop_feat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">backdrop_feature</span><span class="p">)</span>
-        <span class="n">text_feat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">text_feature</span><span class="p">)</span>
-        <span class="n">meta_feat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">meta_feature</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">poster_feat</span><span class="p">,</span> <span class="n">backdrop_feat</span><span class="p">,</span> <span class="n">text_feat</span><span class="p">,</span> <span class="n">meta_feat</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -264,7 +265,7 @@ nb_path: "04_model.ipynb"
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">DistilBertTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;distilbert-base-uncased&#39;</span><span class="p">)</span>
-<span class="n">max_length</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">input_max_length</span><span class="p">,</span> <span class="n">labels_max_length</span> <span class="o">=</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">10</span>
 <span class="n">height</span> <span class="o">=</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">128</span>
 <span class="n">mean</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">]</span>
 </pre></div>
@@ -283,7 +284,7 @@ nb_path: "04_model.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tfms</span> <span class="o">=</span> <span class="n">Compose</span><span class="p">([</span><span class="n">Tokenize</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="n">max_length</span><span class="p">),</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tfms</span> <span class="o">=</span> <span class="n">Compose</span><span class="p">([</span><span class="n">Tokenize</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span> <span class="n">input_max_length</span><span class="o">=</span><span class="n">input_max_length</span><span class="p">,</span> <span class="n">labels_max_length</span><span class="o">=</span><span class="n">labels_max_length</span><span class="p">),</span>
                          <span class="n">RandomResizeCrop</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">Image</span><span class="o">.</span><span class="n">BILINEAR</span><span class="p">),</span>
                          <span class="n">ToTensor</span><span class="p">(),</span>
                          <span class="n">NormalizeStandardize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="n">std</span><span class="p">)])</span>
@@ -296,12 +297,9 @@ nb_path: "04_model.ipynb"
                         <span class="n">transforms</span><span class="o">=</span><span class="n">tfms</span><span class="p">)</span>
 <span class="n">dls</span> <span class="o">=</span> <span class="n">DataLoaders</span><span class="o">.</span><span class="n">from_dsets</span><span class="p">(</span><span class="n">train_ds</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">sample</span> <span class="o">=</span> <span class="n">dls</span><span class="o">.</span><span class="n">one_batch</span><span class="p">()</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">TaglinePredictorModel</span><span class="p">(</span><span class="n">vocab_size</span><span class="o">=</span><span class="mi">30522</span><span class="p">,</span> <span class="n">meta_features</span><span class="o">=</span><span class="n">sample</span><span class="p">[</span><span class="s1">&#39;meta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">res1</span><span class="p">,</span> <span class="n">res2</span><span class="p">,</span> <span class="n">res3</span><span class="p">,</span> <span class="n">res4</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape of poster image is </span><span class="si">{</span><span class="n">res1</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape of backdrop image is </span><span class="si">{</span><span class="n">res2</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape of text feature is </span><span class="si">{</span><span class="n">res3</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape of meta features is </span><span class="si">{</span><span class="n">res4</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">TaglinePredictorModel</span><span class="p">(</span><span class="n">vocab_size</span><span class="o">=</span><span class="mi">30522</span><span class="p">,</span> <span class="n">meta_features</span><span class="o">=</span><span class="n">sample</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape of output is </span><span class="si">{</span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -315,10 +313,8 @@ nb_path: "04_model.ipynb"
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>train dataset created!
-Shape of poster image is torch.Size([1, 1, 30522])
-Shape of backdrop image is torch.Size([1, 1, 30522])
-Shape of text feature is torch.Size([1, 80, 30522])
-Shape of meta features is torch.Size([1, 1, 30522])
+Model is created!
+Shape of output is torch.Size([1, 10, 30522])
 </pre>
 </div>
 </div>
