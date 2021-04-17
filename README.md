@@ -70,8 +70,10 @@ Moving on, we model the problem by creating the architectures and modules requir
 
 We leverage the famous FastAI library to help us with training. The library provides us with numerous benefits, including advanced training techniques using learning rate schedulers and discriminative learning rates, along with seamless integration of features such as mixed precision training in the case where our model might be too big for GPU memory.
 
-We also run evaluation on our test set, as well as predict some examples from the tagless csv to see how our model might perform in real life.
+Here, we train our model and validate it on the validation dataset to give ourselves a good idea of how our model might perform in the real world. Then we save the model to use it for further testing.
 
 ## Results interpretation and recommendations
 
-TO-DO!!!
+We run evaluation on our test set, as well as predict some examples from the tagless csv to see how our model might perform in real life. 
+
+We interpret the results and provide recommendations/suggestions for how we could further improve the results.
