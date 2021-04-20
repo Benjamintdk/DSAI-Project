@@ -4,29 +4,9 @@
 
 ## Project motivation and utility
 
-Ever found yourself staring at a certain movie tagline and wondering what on earth the directors were thinking about when they came up with it? Yes, we too. On the other hand, we've also often been on the other end of the spectrum, struggling to come up with creative titles for our projects or succinct one-liners to encapsulate our business pitches. Enter our movie tagline predictor, a model we have built which we hope will provide some enlightenment to the many lost souls described above. We believe that this model can be transferrable to other salient applications, such as the web-link summarization we often see accompanying our everyday Google searches. 
+Ever found yourself staring at a certain movie tagline and wondering what on earth the directors were thinking about when they came up with it? Yes, we too. On the other hand, we've also often been on the other end of the spectrum, struggling to come up with creative titles for our projects or succinct one-liners to encapsulate our business pitches. Enter our movie tagline predictor, a model we have built which we hope will provide some enlightenment to the many lost souls described above.
 
-## Installation
-
-### Package install:
-Run the following command to install the package from PyPI or conda.
-
-`pip install DSAI_proj`
-
-`conda install DSAI_proj`
-
-### Editable Install:
-1) Clone the repository locally and cd into it. 
-
-2) Create a virtual/conda/pipenv environment first.
-
-3) Depending on which type of environment you are using, run one of the following commands:
-
-`pip install -e`
-
-`conda develop .`
-
-`pipenv install -e`
+We believe that this model can also eventually be transferrable to other salient applications, such as the information retrieval and search engine we often see accompanying our everyday Google searches. 
 
 ## Data Extraction
 
@@ -64,7 +44,7 @@ We next create the Dataset class to encapsulate all the different types of data 
 
 ![](model_diagram.jpg)
 
-Moving on, we model the problem by creating the architectures and modules required to map the various inputs to the predicted tagline. In our case, we will be using an encoder-decoder based structure, with the encoder consisting of separate networks for image, text and meta/tabular data respectively, while the decoder consists of a few transformer decoder layers and a linear layer to output the predicted sequence. 
+Moving on, we model the problem by creating the architectures and modules required to map the various inputs to the predicted tagline. In our case, we will be using an encoder-decoder based structure, with the encoder consisting of separate networks for image, text and meta/tabular data respectively, while the decoder consists of a Conv1D, a linear layer, a Dropout layer and a final softmax layer to output the predicted sequence. 
 
 ## Training and Evaluation
 
@@ -72,8 +52,8 @@ We leverage the famous FastAI library to help us with training. The library prov
 
 Here, we train our model and validate it on the validation dataset to give ourselves a good idea of how our model might perform in the real world. Then we save the model to use it for further testing.
 
-## Results interpretation and recommendations
+## Results interpretation and Future Work
 
-We run evaluation on our test set, as well as predict some examples from the tagless csv to see how our model might perform in real life. 
+We run evaluation on our test set to see how our model might perform in real life. 
 
 We interpret the results and provide recommendations/suggestions for how we could further improve the results.
