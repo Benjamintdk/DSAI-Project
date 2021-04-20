@@ -1,6 +1,7 @@
 # CE1115 DSAI Project 
 > Data Science Project to build a movie tagline predictor. 
 
+
 #### We have documented all our methods and findings extensively on our Github Page. You can access it [here](https://benjamintdk.github.io/DSAI_proj/)
 
 
@@ -61,5 +62,7 @@ We interpret the results and provide recommendations/suggestions for how we coul
 ## Individual Contributions
 
 Ying Cheng: Cleaning, Preprocessing & Extraction
+
 Mitchell: Exploratory Data Analysis and Visualization
+
 Benjamin: Modelling, Training and Evaluation
