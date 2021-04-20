@@ -71,6 +71,8 @@ nb_path: "06_analysis.ipynb"
 </li>
 <li><p>The second is the decoder portion. As of now, our simple linear layer is unable to produce meaningful outputs likely because it cannot reproduce the <strong>rich textual information</strong> which a tagline is normally required to have. Essentially, using a pretrained decoder type of architecture such as the one shown below is likely to produce results especially with a pretrained word embedding to map the hidden state back into the vocabulary word space.</p>
 </li>
+<li><p>The last bonus suggestion would be to use some variant of a <strong>generator-discriminator</strong> network instead since taglines are inherently creative, and having a discriminator to force our network to learn to output more human-like and creative taglines would be helpful.</p>
+</li>
 </ul>
 
 </div>
@@ -113,7 +115,7 @@ nb_path: "06_analysis.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Predicting full taglines is grossly difficult given that much of the vocabulary in these taglines are not available in any part of the input data such as overview or even the poster images. Hence, we could simplify the task to instead to generate <strong>relevant key words</strong> which can be used by the movie directors to generate their final tagline by piecing it together themselves.</p>
+<p>Predicting full taglines is grossly difficult given that much of the vocabulary in these taglines are not available in any part of the input data such as overview or even the poster images. Hence, we could simplify the task to instead to generate <strong>relevant key words</strong> which can be used by the movie directors to generate the final tagline by piecing it together themselves.</p>
 <p>Hence, instead of formulating the probem as a sequence generation and prediction task, we can then reformulate the problem instead to be a multi-class label prediction task as the sequence of words will no longer be a factor.</p>
 
 </div>
