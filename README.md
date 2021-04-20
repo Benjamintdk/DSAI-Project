@@ -1,7 +1,7 @@
 # CE1115 DSAI Project 
 > Data Science Project to build a movie tagline predictor. 
 
-#### We have documented all our methods and findings extensively and you can access it [here](https://benjamintdk.github.io/DSAI_proj/)
+#### We have documented all our methods and findings extensively on our Github Page. You can access it [here](https://benjamintdk.github.io/DSAI_proj/)
 
 
 ## Project motivation and utility
@@ -56,6 +56,10 @@ Here, we train our model and validate it on the validation dataset to give ourse
 
 ## Results interpretation and Future Work
 
-We run evaluation on our test set to see how our model might perform in real life. 
+We interpret the results and provide recommendations/suggestions for how we could further improve the results. This is done by separating the sections for targeted improvement into data, model, loss function and problem reformulation.
 
-We interpret the results and provide recommendations/suggestions for how we could further improve the results.
+## Individual Contributions
+
+Ying Cheng: Cleaning, Preprocessing & Extraction
+Mitchell: Exploratory Data Analysis and Visualization
+Benjamin: Modelling, Training and Evaluation
