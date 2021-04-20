@@ -1,6 +1,8 @@
 # CE1115 DSAI Project 
 > Data Science Project to build a movie tagline predictor. 
 
+#### We have documented all our methods and findings extensively and you can access it [here](https://benjamintdk.github.io/DSAI_proj/)
+
 
 ## Project motivation and utility
 
@@ -32,7 +34,7 @@ After the EDA step, we have generated insights from the data in terms of their d
 - Separate out examples with and without taglines.
 - Save the dataset into separate train, valid, test and tagless csv files.
 
-# Dataset
+## Dataset
 
 We next create the Dataset class to encapsulate all the different types of data which we will be working with. We also add in augmentations and transformations including:
 - Tokenization of text based on the text based encoder which we will be using (DistilBert).
