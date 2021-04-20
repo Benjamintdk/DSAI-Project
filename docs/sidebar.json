@@ -6,6 +6,7 @@
     "Data Cleaning and Feature Engineering": "clean.html",
     "Dataset": "dataset.html",
     "Model": "model.html",
-    "Train": "train.html"
+    "Train": "train.html",
+    "Analysis": "analysis.html"
   }
 }

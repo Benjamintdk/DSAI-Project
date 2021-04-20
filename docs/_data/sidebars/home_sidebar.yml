@@ -27,6 +27,9 @@ entries:
     - output: web,pdf
       title: Train
       url: train.html
+    - output: web,pdf
+      title: Analysis
+      url: analysis.html
     output: web
     title: DSAI_proj
   output: web

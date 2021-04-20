@@ -43,15 +43,18 @@ def text_encoder(model_type: str):
 # Cell
 
 def meta_encoder(in_channels: int, out_channels: int):
-    model = nn.Linear(in_features=in_channels, out_features=out_channels)
-    return model
+    model = [nn.Linear(in_features=in_channels, out_features=out_channels),
+             nn.Dropout(0.3)]
+    return nn.Sequential(*model)
 
 # Cell
 
 def decoder(cur_len: int, max_seq_len: int, hidden_dim: int, vocab_size: int):
     layers = [nn.Conv1d(in_channels=cur_len, out_channels=max_seq_len, kernel_size=1, stride=1),
+              nn.ReLU(),
               nn.Linear(in_features=hidden_dim, out_features=vocab_size),
-              nn.Dropout(0.5)]
+              nn.Softmax(dim=-1),
+              nn.Dropout(0.3)]
     return nn.Sequential(*layers)
 
 # Cell
@@ -74,4 +77,4 @@ class TaglinePredictorModel(nn.Module):
 
         combined_feature = torch.cat((poster_feature, backdrop_feature, text_feature, meta_feature), dim=1)
         output = self.decoder(combined_feature)
-        return output
+        return output.permute(0, 2, 1)

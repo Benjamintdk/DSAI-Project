@@ -37,46 +37,8 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Ever found yourself staring at a certain movie tagline and wondering what on earth the directors were thinking about when they came up with it? Yes, we too. On the other hand, we've also often been on the other end of the spectrum, struggling to come up with creative titles for our projects or succinct one-liners to encapsulate our business pitches. Enter our movie tagline predictor, a model we have built which we hope will provide some enlightenment to the many lost souls described above. We believe that this model can be transferrable to other salient applications, such as the web-link summarization we often see accompanying our everyday Google searches.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Installation">Installation<a class="anchor-link" href="#Installation"> </a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Package-install:">Package install:<a class="anchor-link" href="#Package-install:"> </a></h3><p>Run the following command to install the package from PyPI or conda.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><code>pip install DSAI_proj</code></p>
-<p><code>conda install DSAI_proj</code></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Editable-Install:">Editable Install:<a class="anchor-link" href="#Editable-Install:"> </a></h3><p>1) Clone the repository locally and cd into it.</p>
-<p>2) Create a virtual/conda/pipenv environment first.</p>
-<p>3) Depending on which type of environment you are using, run one of the following commands:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><code>pip install -e</code></p>
-<p><code>conda develop .</code></p>
-<p><code>pipenv install -e</code></p>
+<p>Ever found yourself staring at a certain movie tagline and wondering what on earth the directors were thinking about when they came up with it? Yes, we too. On the other hand, we've also often been on the other end of the spectrum, struggling to come up with creative titles for our projects or succinct one-liners to encapsulate our business pitches. Enter our movie tagline predictor, a model we have built which we hope will provide some enlightenment to the many lost souls described above.</p>
+<p>We believe that this model can also eventually be transferrable to other salient applications, such as the information retrieval and search engine we often see accompanying our everyday Google searches.</p>
 
 </div>
 </div>
@@ -172,7 +134,7 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Moving on, we model the problem by creating the architectures and modules required to map the various inputs to the predicted tagline. In our case, we will be using an encoder-decoder based structure, with the encoder consisting of separate networks for image, text and meta/tabular data respectively, while the decoder consists of a few transformer decoder layers and a linear layer to output the predicted sequence.</p>
+<p>Moving on, we model the problem by creating the architectures and modules required to map the various inputs to the predicted tagline. In our case, we will be using an encoder-decoder based structure, with the encoder consisting of separate networks for image, text and meta/tabular data respectively, while the decoder consists of a Conv1D, a linear layer, a Dropout layer and a final softmax layer to output the predicted sequence.</p>
 
 </div>
 </div>
@@ -186,20 +148,21 @@ nb_path: "index.ipynb"
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We leverage the famous FastAI library to help us with training. The library provides us with numerous benefits, including advanced training techniques using learning rate schedulers and discriminative learning rates, along with seamless integration of features such as mixed precision training in the case where our model might be too big for GPU memory.</p>
-<p>We also run evaluation on our test set, as well as predict some examples from the tagless csv to see how our model might perform in real life.</p>
+<p>Here, we train our model and validate it on the validation dataset to give ourselves a good idea of how our model might perform in the real world. Then we save the model to use it for further testing.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Results-interpretation-and-recommendations">Results interpretation and recommendations<a class="anchor-link" href="#Results-interpretation-and-recommendations"> </a></h2>
+<h2 id="Results-interpretation-and-Future-Work">Results interpretation and Future Work<a class="anchor-link" href="#Results-interpretation-and-Future-Work"> </a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>TO-DO!!!</p>
+<p>We run evaluation on our test set to see how our model might perform in real life.</p>
+<p>We interpret the results and provide recommendations/suggestions for how we could further improve the results.</p>
 
 </div>
 </div>
